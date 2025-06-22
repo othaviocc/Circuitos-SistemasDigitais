@@ -1,0 +1,36 @@
+*SIMULACAO DE UM INVERSOR
+
+.include 32nm_HP.pm
+
+
+*Declaração das Fontes
+
+Vvdd vdd gnd 0.9
+Va a gnd PWL(0n 0 1n 0 1.01n 0.9 4n 0.9 4.01n 0 7n 0 7.01n 0.9 9n 0.9 9.01n 0)
+
+*Declaração do Netlist
+
+Mp1 s a vdd vdd PMOS w=100n L=32n
+Mn1 s a gnd gnd NMOS w=100n L=32n
+
+*capacitor acoplado na saída simulando uma carga
+Cload s gnd 1f 
+
+*Tipo de Simulação
+
+.tran 0.001n 10n
+
+.measure tran tphl_A01 trig v(a) val='0.5*0.9' rise=2 targ v(s) val='0.5*0.9' fall=1
+
+.measure tran tplh_A10 trig v(a) val='0.5*0.9' fall=1 targ v(s) val='0.5*0.9' rise=1
+
+.measure tran trise trig v(s) val='0.1*1' rise=1
+                   + targ v(s) val='0.9*1' rise=1
+
+.measure tran tfall trig v(s) val='0.9*1' fall=1 targ v(s) val='0.1*1' fall=1
+
+
+*MEDINDO A CORRENTE DO CIRCUITO durante um período específico
+.measure tran Iint INTEG i(vvdd) from=1n to=8n
+
+.end

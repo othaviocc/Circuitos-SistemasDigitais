@@ -1,0 +1,35 @@
+**Curva Id x Vds de um transistor NMOS
+
+* Modelo do transistor 
+.include 32nm_HP.pm 
+
+*Fontes 
+vgs gate 0 0.9 
+vds dreno 0 0.9 
+vf fonte 0  0
+vb bulk 0  0
+
+* Circuito 
+Mnmos dreno gate fonte bulk NMOS W=200n L=32n
+
+* Simulação
+*varias curvas Vgs e Ids x Vds
+  *.dc vds 0 0.9 0.1 vgs 0.2 0.9 0.1 
+
+*achar Vth do transistor
+  *.dc vgs 0 0.9 0.01  
+
+*somente um Vgs e curva Ids x Vds
+  .dc vds 0 0.9 0.01  
+
+
+.control
+set color0=white
+set xbrushwidth=3
+.endc
+
+.end
+
+
+
+

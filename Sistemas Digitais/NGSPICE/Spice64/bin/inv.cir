@@ -1,0 +1,20 @@
+**inversor
+
+* Modelo do transistor 
+.include 32nm_HP.pm 
+
+*Fontes 
+Vfonte vdd gnd 0.9
+Va a gnd PWL(0n 0 3n 0 3.01n 0.9 6n 0.9 6.01n 0)
+
+
+* Circuito 
+Mp vdd a s vdd PMOS W=100n L=32n
+Mn gnd a s gnd NMOS W=100n L=32n
+
+*simulação transiente de 10ns com passo de 1ps
+* Simulação 
+.tran 0.001ns 10ns
+
+.end
+

@@ -1,0 +1,28 @@
+
+
+
+.subckt XOR_1 A B saida vdd gnd
+*inversor entrada A
+Mp1 vdd a a_neg vdd PMOS w=105n L=32n
+Mn1 gnd a a_neg gnd NMOS w=70n L=32n
+
+*inversor entrada B
+Mp2 vdd b b_neg vdd PMOS w=105n L=32n
+Mn2 gnd b b_neg gnd NMOS w=70n L=32n
+
+*porta XOR
+Mp3 vdd a_neg x1 vdd PMOS w=105n L=32n
+Mp4 vdd b x1 vdd PMOS w=105n L=32n
+Mp5 x1 a s vdd PMOS w=105n L=32n
+Mp6 x1 b_neg s vdd PMOS w=105n L=32n
+
+Mn3 gnd b_neg x3 gnd NMOS w=70n L=32n
+Mn4 gnd b x4 gnd NMOS w=70n L=32n
+Mn5 x3 a s gnd NMOS w=70n L=32n
+Mn6 x4 a_neg s gnd NMOS w=70n L=32n
+
+*inversor na saida
+Mp7 vdd s saida vdd PMOS w=105n L=32n
+Mn7 gnd s saida gnd NMOS w=70n L=32n
+
+.ends

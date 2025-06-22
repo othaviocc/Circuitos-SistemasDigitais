@@ -1,0 +1,15 @@
+* Declarando Fontes de tensão
+
+
+* Declaração das fontes
+
+Vex vcc gnd 7
+
+Vfonte  A  gnd  PWL  (0n 0 1n 0 1.01n 1 2n 1 2.01n 0)
+
+
+* Simulação Transiente de 10ns com passo de 0.1ns
+.tran 0.01ns 10ns 
+
+* Fim do Arquivo SPICE
+.end

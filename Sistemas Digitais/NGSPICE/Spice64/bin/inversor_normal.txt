@@ -1,0 +1,23 @@
+*SIMULACAO DE UM INVERSOR
+
+.include 32nm_HP.pm
+
+
+*Declaração das Fontes
+
+Vvdd vdd gnd 0.9
+Va a gnd PWL(0n 0 1n 0 1.01n 0.9 4n 0.9 4.01n 0 7n 0 7.01n 0.9 9n 0.9 9.01n 0)
+
+Vaula x gnd PWL(0n 0 2n 0 2.01n 0.9 6n 0.9 6.01n 0)
+
+*Declaração do Netlist
+
+Mp1 vdd a s vdd PMOS w=100n L=32n
+Mn1 gnd a s gnd NMOS w=100n L=32n
+
+*capacitor acoplado na saída simulando uma carga 
+
+*Tipo de Simulação
+.tran 0.001n 10n
+
+.end
