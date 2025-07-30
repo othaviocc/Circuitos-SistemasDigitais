@@ -1,0 +1,99 @@
+* Parte 1: Somador Ripple-Carry de 3 bits em NGSPICE
+
+.INCLUDE 32nm_HP.pm
+
+Vdd vdd 0 DC 0.9V
+
+* --- Inversor (INV) ---
+.SUBCKT INV A Y vdd gnd
+    Mp Y A vdd vdd PMOS W=105n L=32n
+    Mn Y A gnd gnd NMOS W=70n  L=32n
+.ENDS INV
+
+* --- NAND de 2 entradas (NAND2) ---
+* PMOS em paralelo (mantém W), NMOS em série (W dobrado).
+.SUBCKT NAND2 A B Y vdd gnd
+    Mp1 Y A vdd vdd PMOS W=105n L=32n
+    Mp2 Y B vdd vdd PMOS W=105n L=32n
+    Mn1 Y A n1  gnd NMOS W=140n L=32n
+    Mn2 n1 B gnd gnd NMOS W=140n L=32n
+.ENDS NAND2
+
+* --- NOR de 2 entradas (NOR2) ---
+* PMOS em série (W dobrado), NMOS em paralelo (mantém W).
+.SUBCKT NOR2 A B Y vdd gnd
+    Mp1 Y A n1  vdd PMOS W=210n L=32n
+    Mp2 n1 B vdd vdd PMOS W=210n L=32n
+    Mn1 Y A gnd gnd NMOS W=70n  L=32n
+    Mn2 Y B gnd gnd NMOS W=70n  L=32n
+.ENDS NOR2
+
+* --- AND de 2 entradas (AND2) ---
+* Implementação: NAND2 + INV.
+.SUBCKT AND2 A B Y vdd gnd
+    Xnand A B n_nand vdd gnd NAND2
+    Xinv  n_nand Y vdd gnd INV
+.ENDS AND2
+
+* --- OR de 2 entradas (OR2) ---
+* Implementação: NOR2 + INV.
+.SUBCKT OR2 A B Y vdd gnd
+    Xnor A B n_nor vdd gnd NOR2
+    Xinv n_nor Y vdd gnd INV
+.ENDS OR2
+
+* --- XOR de 2 entradas (XOR2) ---
+* Implementação da expressão A'B + AB'.
+.SUBCKT XOR2 A B Y vdd gnd
+    Xinv_A  A   A_n vdd gnd INV
+    Xinv_B  B   B_n vdd gnd INV
+    Xand1   A_n B   W1  vdd gnd AND2
+    Xand2   A   B_n W2  vdd gnd AND2
+    Xor_out W1  W2  Y   vdd gnd OR2
+.ENDS XOR2
+
+* --- Somador Completo de 1 bit (Full Adder) ---
+* Implementado iguyal a Figura 2 do trabalho.
+.SUBCKT FA A B Cin S Cout vdd gnd
+    * S = (A XOR B) XOR Cin
+    Xxor1 A B n1 vdd gnd XOR2
+    Xxor2 n1 Cin S vdd gnd XOR2
+    
+    * Cout = (A AND B) OR ((A XOR B) AND Cin)
+    Xand1 A B  n2 vdd gnd AND2
+    Xand2 n1 Cin n3 vdd gnd AND2
+    Xor1  n2 n3 Cout vdd gnd OR2
+.ENDS FA
+
+* --- Instanciação dos 3 Full Adders em cascata ---
+* FA0: bit menos significativo (LSB)
+XFA0 A0 B0 C0 S0 C1 vdd 0 FA
+
+* FA1: bit do meio
+XFA1 A1 B1 C1 S1 C2 vdd 0 FA
+
+* FA2: bit mais significativo (MSB)
+XFA2 A2 B2 C2 S2 C3 vdd 0 FA
+
+* --- Fontes de Tensão (Estímulos de Entrada) ---
+* Fontes PULSE para gerar um ciclo de contagem de 0 a 7 nos números A e B.
+* O número A e o número B recebem os mesmos sinais para testar a soma A+A.
+VC0 C0 0 DC 0
+Va0 A0 0 PULSE(0 0.9 0 1p 1p 50ns 100ns)
+Va1 A1 0 PULSE(0 0.9 0 1p 1p 100ns 200ns)
+Va2 A2 0 PULSE(0 0.9 0 1p 1p 200ns 400ns)
+Vb0 B0 0 PULSE(0 0.9 0 1p 1p 50ns 100ns)
+Vb1 B1 0 PULSE(0 0.9 0 1p 1p 100ns 200ns)
+Vb2 B2 0 PULSE(0 0.9 0 1p 1p 200ns 400ns)
+
+* --- Análise de Simulação ---
+.TRAN 1ns 800ns
+
+* --- Controle de Saída (Plot) ---
+.CONTROL
+    run
+    plot v(A2) v(A1) v(A0) v(B2)+2 v(B1)+2 v(B0)+2
+    plot v(C3)+4 v(S2)+2 v(S1) v(S0)-2
+.ENDC
+
+.END

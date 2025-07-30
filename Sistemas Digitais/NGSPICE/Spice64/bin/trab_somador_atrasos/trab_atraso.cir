@@ -1,0 +1,184 @@
+* Parte 2: Análise de Atrasos - Somador Ripple-Carry de 3 bits
+* Tirar o asterisco de um teste apenas por vez, rodar sempre separado
+
+.INCLUDE 32nm_HP.pm
+
+Vdd vdd 0 DC 0.9V
+
+* --- Inversor (INV) ---
+.SUBCKT INV A Y vdd gnd
+    Mp Y A vdd vdd PMOS W=105n L=32n
+    Mn Y A gnd gnd NMOS W=70n  L=32n
+.ENDS INV
+
+* --- NAND de 2 entradas (NAND2) ---
+.SUBCKT NAND2 A B Y vdd gnd
+    Mp1 Y A vdd vdd PMOS W=105n L=32n
+    Mp2 Y B vdd vdd PMOS W=105n L=32n
+    Mn1 Y A n1  gnd NMOS W=140n L=32n
+    Mn2 n1 B gnd gnd NMOS W=140n L=32n
+.ENDS NAND2
+
+* --- NOR de 2 entradas (NOR2) ---
+.SUBCKT NOR2 A B Y vdd gnd
+    Mp1 Y A n1  vdd PMOS W=210n L=32n
+    Mp2 n1 B vdd vdd PMOS W=210n L=32n
+    Mn1 Y A gnd gnd NMOS W=70n  L=32n
+    Mn2 Y B gnd gnd NMOS W=70n  L=32n
+.ENDS NOR2
+
+* --- AND de 2 entradas (AND2) ---
+.SUBCKT AND2 A B Y vdd gnd
+    Xnand A B n_nand vdd gnd NAND2
+    Xinv  n_nand Y vdd gnd INV
+.ENDS AND2
+
+* --- OR de 2 entradas (OR2) ---
+.SUBCKT OR2 A B Y vdd gnd
+    Xnor A B n_nor vdd gnd NOR2
+    Xinv n_nor Y vdd gnd INV
+.ENDS OR2
+
+* --- XOR de 2 entradas (XOR2) ---
+.SUBCKT XOR2 A B Y vdd gnd
+    Xinv_A  A   A_n vdd gnd INV
+    Xinv_B  B   B_n vdd gnd INV
+    Xand1   A_n B   W1  vdd gnd AND2
+    Xand2   A   B_n W2  vdd gnd AND2
+    Xor_out W1  W2  Y   vdd gnd OR2
+.ENDS XOR2
+
+* --- Somador Completo de 1 bit (Full Adder) ---
+.SUBCKT FA A B Cin S Cout vdd gnd
+    Xxor1 A B n1 vdd gnd XOR2
+    Xxor2 n1 Cin S vdd gnd XOR2
+    Xand1 A B  n2 vdd gnd AND2
+    Xand2 n1 Cin n3 vdd gnd AND2
+    Xor1  n2 n3 Cout vdd gnd OR2
+.ENDS FA
+
+* Somador 3 bits.
+XFA0 A0 B0 C0 S0 C1 vdd 0 FA
+XFA1 A1 B1 C1 S1 C2 vdd 0 FA
+XFA2 A2 B2 C2 S2 C3 vdd 0 FA
+
+* Análise transiente base para todos os testes
+.TRAN 50ps 5ns
+
+* Testes realizadps:
+
+* --- TESTE 1: Atraso de Propagação (C0 -> C3) ---
+*V_A2 A2 0 DC 0.9V
+*V_A1 A1 0 DC 0.9V
+*V_A0 A0 0 DC 0.9V
+*V_B2 B2 0 DC 0V
+*V_B1 B1 0 DC 0V
+*V_B0 B0 0 DC 0V
+*V_C0 C0 0 PULSE(0 0.9V 1ns 100ps 100ps 1ns 2ns)
+*.MEASURE TRAN tp_C0_C3_lh TRIG v(C0) VAL=0.45 RISE=1 TARG v(C3) VAL=0.45 RISE=1
+*.MEASURE TRAN tp_C0_S2_hl TRIG v(C0) VAL=0.45 RISE=1 TARG v(S2) VAL=0.45 FALL=1
+*.CONTROL
+* run
+* plot v(C0) v(S2)+2 v(C3)+4
+*.ENDC
+
+* --- TESTE 2: Atraso Local LSB (A0 -> S0) ---
+* Setup: B0=0, C0=0. S0 segue A0.
+*V_A0 A0 0 PULSE(0 0.9V 1ns 100ps 100ps 1ns 2ns)
+*V_B0 B0 0 DC 0V
+*V_C0 C0 0 DC 0V
+*V_A1 A1 0 DC 0V
+*V_B1 B1 0 DC 0V
+*V_A2 A2 0 DC 0V
+*V_B2 B2 0 DC 0V
+*.MEASURE TRAN tp_A0_S0_lh TRIG v(A0) VAL=0.45 RISE=1 TARG v(S0) VAL=0.45 RISE=1
+*.MEASURE TRAN tp_A0_S0_hl TRIG v(A0) VAL=0.45 FALL=1 TARG v(S0) VAL=0.45 FALL=1
+*.CONTROL
+* run
+* plot v(A0) v(S0)+2
+*.ENDC
+
+* --- TESTE 3: Atraso de Geração de Carry LSB (A0 -> C1) ---
+* Setup: B0=1, C0=0. C1 é gerado quando A0 sobe para 1.
+*V_A0 A0 0 PULSE(0 0.9V 1ns 100ps 100ps 1ns 2ns)
+*V_B0 B0 0 DC 0.9V
+*V_C0 C0 0 DC 0V
+*V_A1 A1 0 DC 0V
+*V_B1 B1 0 DC 0V
+*V_A2 A2 0 DC 0V
+*V_B2 B2 0 DC 0V
+*.MEASURE TRAN tp_A0_C1_lh TRIG v(A0) VAL=0.45 RISE=1 TARG v(C1) VAL=0.45 RISE=1
+*.MEASURE TRAN tp_A0_C1_hl TRIG v(A0) VAL=0.45 FALL=1 TARG v(C1) VAL=0.45 FALL=1
+*.CONTROL
+* run
+* plot v(A0) v(C1)+2
+*.ENDC
+
+* --- TESTE 4: Atraso Local MSB (A2 -> S2) ---
+* Setup: B2=0, C2=0. S2 segue A2. Nenhuma propagação de carry.
+*V_A2 A2 0 PULSE(0 0.9V 1ns 100ps 100ps 1ns 2ns)
+*V_B2 B2 0 DC 0V
+*V_A1 A1 0 DC 0V
+*V_B1 B1 0 DC 0V
+*V_A0 A0 0 DC 0V
+*V_B0 B0 0 DC 0V
+*V_C0 C0 0 DC 0V
+*.MEASURE TRAN tp_A2_S2_lh TRIG v(A2) VAL=0.45 RISE=1 TARG v(S2) VAL=0.45 RISE=1
+*.MEASURE TRAN tp_A2_S2_hl TRIG v(A2) VAL=0.45 FALL=1 TARG v(S2) VAL=0.45 FALL=1
+*.CONTROL
+* run
+* plot v(A2) v(S2)+2
+*.ENDC
+
+* --- TESTE 5: Atraso de Propagação de Carry (C1 -> S2) ---
+* Setup: A1=1, B1=0. S2 depende de C1.
+*V_C1 C1 0 PULSE(0 0.9V 1ns 100ps 100ps 1ns 2ns)
+*V_A1 A1 0 DC 0.9V
+*V_B1 B1 0 DC 0V
+*V_A2 A2 0 DC 0V
+*V_B2 B2 0 DC 0V
+*V_A0 A0 0 DC 0V
+*V_B0 B0 0 DC 0V
+*V_C0 C0 0 DC 0V
+*.MEASURE TRAN tp_C1_S2_lh TRIG v(C1) VAL=0.45 RISE=1 TARG v(S2) VAL=0.45 RISE=1
+*.MEASURE TRAN tp_C1_S2_hl TRIG v(C1) VAL=0.45 FALL=1 TARG v(S2) VAL=0.45 FALL=1
+*.CONTROL
+* run
+* plot v(C1) v(S2)+2
+*.ENDC
+
+* --- TESTE 6: Atraso do bit B do meio (B1 -> S1) ---
+* Setup: A1=0, C1=0. S1 segue B1.
+*V_B1 B1 0 PULSE(0 0.9V 1ns 100ps 100ps 1ns 2ns)
+*V_A1 A1 0 DC 0V
+*V_C1 C1 0 DC 0V
+*V_A0 A0 0 DC 0V
+*V_B0 B0 0 DC 0V
+*V_C0 C0 0 DC 0V
+*V_A2 A2 0 DC 0V
+*V_B2 B2 0 DC 0V
+*.MEASURE TRAN tp_B1_S1_lh TRIG v(B1) VAL=0.45 RISE=1 TARG v(S1) VAL=0.45 RISE=1
+*.MEASURE TRAN tp_B1_S1_hl TRIG v(B1) VAL=0.45 FALL=1 TARG v(S1) VAL=0.45 FALL=1
+*.CONTROL
+* run
+* plot v(B1) v(S1)+2
+*.ENDC
+
+* --- TESTE 7: Atraso de Carry no último estágio (C2 -> C3) ---
+* Setup: A2=1, B2=0. C3 é gerado quando C2 sobe para 1.
+V_C2 C2 0 PULSE(0 0.9V 1ns 100ps 100ps 1ns 2ns)
+V_A2 A2 0 DC 0.9V
+V_B2 B2 0 DC 0V
+V_A1 A1 0 DC 0V
+V_B1 B1 0 DC 0V
+V_A0 A0 0 DC 0V
+V_B0 B0 0 DC 0V
+V_C0 C0 0 DC 0V
+.MEASURE TRAN tp_C2_C3_lh TRIG v(C2) VAL=0.45 RISE=1 TARG v(C3) VAL=0.45 RISE=1
+.MEASURE TRAN tp_C2_C3_hl TRIG v(C2) VAL=0.45 FALL=1 TARG v(C3) VAL=0.45 FALL=1
+.CONTROL
+ run
+ plot v(C2) v(C3)+2
+.ENDC
+
+.END
