@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "author": "Carlos Rodrigues Rocha",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -96,
+      "left": -187.16,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    { "type": "wokwi-neopixel", "id": "rgb1", "top": -51.5, "left": -68.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "rgb1:VDD", "esp:3V3", "red", [ "h-9.6", "v-28.8", "h-124.8", "v9.6" ] ],
+    [ "rgb1:VSS", "esp:GND.3", "black", [ "v0" ] ],
+    [ "rgb1:DIN", "esp:18", "green", [ "h8.8", "v57.6" ] ]
+  ],
+  "dependencies": {}
+}
