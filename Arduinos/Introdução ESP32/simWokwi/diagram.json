@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "author": "Carlos Rodrigues Rocha",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -86.4,
+      "left": -340.76,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": -34, "left": -380.9, "attrs": {} },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": -13,
+      "left": -227.6,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 73.2,
+      "left": -207.4,
+      "attrs": { "color": "white", "flip": "" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 43.2,
+      "left": -240.55,
+      "rotate": 90,
+      "attrs": { "value": "100" }
+    },
+    {
+      "type": "wokwi-vcc",
+      "id": "vcc1",
+      "top": 95.04,
+      "left": -172.6,
+      "rotate": 180,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "relay1:GND", "esp:GND.2", "black", [ "v-22.8", "h-92.8" ] ],
+    [ "r1:2", "led1:C", "black", [ "v0" ] ],
+    [ "esp:GND.2", "r1:1", "black", [ "v0", "h28.8" ] ],
+    [ "relay1:NO", "led1:A", "orange", [ "v0" ] ],
+    [ "relay1:IN", "esp:23", "blue", [ "v0" ] ],
+    [ "relay1:VCC", "esp:3V3", "red", [ "v-38.4", "h-182.4" ] ],
+    [ "relay1:COM", "vcc1:VCC", "red", [ "v0" ] ],
+    [ "sw1:2", "esp:14", "green", [ "v0" ] ],
+    [ "sw1:1", "esp:GND.1", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
