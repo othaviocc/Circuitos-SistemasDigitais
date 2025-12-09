@@ -1,0 +1,316 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Fri Dec  5 14:57:12 2025
+# Process ID         : 11032
+# Current directory  : C:/Users/Aluno/Documents/project_12/project_12.runs/synth_1
+# Command line       : vivado.exe -log topo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source topo.tcl
+# Log file           : C:/Users/Aluno/Documents/project_12/project_12.runs/synth_1/topo.vds
+# Journal file       : C:/Users/Aluno/Documents/project_12/project_12.runs/synth_1\vivado.jou
+# Running On         : DESKTOP-HTMCFGA
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 5 5600GT with Radeon Graphics        
+# CPU Frequency      : 3593 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 33601 MB
+# Swap memory        : 5100 MB
+# Total Virtual      : 38702 MB
+# Available Virtual  : 30664 MB
+#-----------------------------------------------------------
+source topo.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental C:/Users/Aluno/Documents/project_12/project_12.srcs/utils_1/imports/synth_1/topo.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/Aluno/Documents/project_12/project_12.srcs/utils_1/imports/synth_1/topo.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top topo -part xc7s50csga324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7s50'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s50'
+INFO: [Device 21-403] Loading part xc7s50csga324-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 10484
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1161.719 ; gain = 493.246
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'topo' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/topo.vhd:21]
+INFO: [Synth 8-3491] module 'maquina_de_estados' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/maquina_de_estados.vhd:5' bound to instance 'inst_fsm' of component 'maquina_de_estados' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/topo.vhd:46]
+INFO: [Synth 8-638] synthesizing module 'maquina_de_estados' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/maquina_de_estados.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'maquina_de_estados' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/maquina_de_estados.vhd:25]
+INFO: [Synth 8-3491] module 'memoria' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:4' bound to instance 'inst_memoria' of component 'memoria' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/topo.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'memoria' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:12]
+INFO: [Synth 8-3491] module 'decodificador' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador.vhd:5' bound to instance 'decodificador_line' of component 'decodificador' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'decodificador' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'decodificador' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador.vhd:12]
+INFO: [Synth 8-3491] module 'decodificador' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador.vhd:5' bound to instance 'decodificador_col' of component 'decodificador' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:45]
+INFO: [Synth 8-3491] module 'flipflopD_8bits' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:4' bound to instance 'ff0' of component 'flipflopD_8bits' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'flipflopD_8bits' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:12]
+INFO: [Synth 8-3491] module 'flipflopD' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:4' bound to instance 'FF1' of component 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:27]
+INFO: [Synth 8-638] synthesizing module 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'flipflopD' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:11]
+INFO: [Synth 8-3491] module 'flipflopD' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:4' bound to instance 'FF2' of component 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:28]
+INFO: [Synth 8-3491] module 'flipflopD' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:4' bound to instance 'FF3' of component 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:29]
+INFO: [Synth 8-3491] module 'flipflopD' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:4' bound to instance 'FF4' of component 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:30]
+INFO: [Synth 8-3491] module 'flipflopD' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:4' bound to instance 'FF5' of component 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:31]
+INFO: [Synth 8-3491] module 'flipflopD' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:4' bound to instance 'FF6' of component 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:32]
+INFO: [Synth 8-3491] module 'flipflopD' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:4' bound to instance 'FF7' of component 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:33]
+INFO: [Synth 8-3491] module 'flipflopD' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD.vhd:4' bound to instance 'FF8' of component 'flipflopD' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:34]
+INFO: [Synth 8-256] done synthesizing module 'flipflopD_8bits' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:12]
+INFO: [Synth 8-3491] module 'flipflopD_8bits' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:4' bound to instance 'ff1' of component 'flipflopD_8bits' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:48]
+INFO: [Synth 8-3491] module 'flipflopD_8bits' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:4' bound to instance 'ff2' of component 'flipflopD_8bits' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:49]
+INFO: [Synth 8-3491] module 'flipflopD_8bits' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/flipflopD_8bits.vhd:4' bound to instance 'ff3' of component 'flipflopD_8bits' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:50]
+INFO: [Synth 8-3491] module 'multiplexador' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/multiplexador.vhd:4' bound to instance 'mux' of component 'multiplexador' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:56]
+INFO: [Synth 8-638] synthesizing module 'multiplexador' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/multiplexador.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'multiplexador' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/multiplexador.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'memoria' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/memoria.vhd:12]
+INFO: [Synth 8-3491] module 'decodificador_display' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:5' bound to instance 'inst_display' of component 'decodificador_display' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/topo.vhd:49]
+INFO: [Synth 8-638] synthesizing module 'decodificador_display' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:21]
+INFO: [Synth 8-3491] module 'bin_to_bcd' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bin_to_bcd.vhd:5' bound to instance 'bcd_mem' of component 'bin_to_bcd' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'bin_to_bcd' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bin_to_bcd.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'bin_to_bcd' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bin_to_bcd.vhd:14]
+INFO: [Synth 8-3491] module 'bcd_to_7seg' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bcd_to_7seg.vhd:4' bound to instance 'seg_mem_h' of component 'bcd_to_7seg' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'bcd_to_7seg' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bcd_to_7seg.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'bcd_to_7seg' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bcd_to_7seg.vhd:11]
+INFO: [Synth 8-3491] module 'bcd_to_7seg' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bcd_to_7seg.vhd:4' bound to instance 'seg_mem_t' of component 'bcd_to_7seg' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:46]
+INFO: [Synth 8-3491] module 'bcd_to_7seg' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bcd_to_7seg.vhd:4' bound to instance 'seg_mem_u' of component 'bcd_to_7seg' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:47]
+INFO: [Synth 8-3491] module 'bin_to_bcd' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bin_to_bcd.vhd:5' bound to instance 'bcd_write' of component 'bin_to_bcd' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:49]
+INFO: [Synth 8-3491] module 'bcd_to_7seg' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bcd_to_7seg.vhd:4' bound to instance 'seg_write_h' of component 'bcd_to_7seg' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:50]
+INFO: [Synth 8-3491] module 'bcd_to_7seg' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bcd_to_7seg.vhd:4' bound to instance 'seg_write_t' of component 'bcd_to_7seg' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:51]
+INFO: [Synth 8-3491] module 'bcd_to_7seg' declared at 'C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/bcd_to_7seg.vhd:4' bound to instance 'seg_write_u' of component 'bcd_to_7seg' [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'decodificador_display' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/decodificador_display.vhd:21]
+INFO: [Synth 8-256] done synthesizing module 'topo' (0#1) [C:/Users/Aluno/Documents/project_12/project_12.srcs/sources_1/imports/teste MAQUINA 2/topo.vhd:21]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1269.949 ; gain = 601.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1269.949 ; gain = 601.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1269.949 ; gain = 601.477
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1269.949 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Aluno/Documents/project_12/project_12.srcs/constrs_1/imports/teste MAQUINA 2/pinagem.xdc]
+Finished Parsing XDC File [C:/Users/Aluno/Documents/project_12/project_12.srcs/constrs_1/imports/teste MAQUINA 2/pinagem.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Aluno/Documents/project_12/project_12.srcs/constrs_1/imports/teste MAQUINA 2/pinagem.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/topo_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/topo_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1352.980 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1352.980 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1352.980 ; gain = 684.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7s50csga324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1352.980 ; gain = 684.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1352.980 ; gain = 684.508
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'estado_atual_reg' in module 'maquina_de_estados'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  s_init |                      00000000001 |                             0000
+               s_write_0 |                      00000000010 |                             0001
+               s_write_1 |                      00000000100 |                             0010
+               s_write_2 |                      00000001000 |                             0011
+               s_write_3 |                      00000010000 |                             0100
+                s_read_0 |                      00000100000 |                             0101
+                s_read_1 |                      00001000000 |                             0110
+                s_read_2 |                      00010000000 |                             0111
+                s_read_3 |                      00100000000 |                             1000
+             s_clear_mem |                      01000000000 |                             1001
+                 s_final |                      10000000000 |                             1010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'estado_atual_reg' using encoding 'one-hot' in module 'maquina_de_estados'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1352.980 ; gain = 684.508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   27 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 20    
+	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 2     
++---Registers : 
+	               27 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 32    
++---Muxes : 
+	   2 Input   27 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 9     
+	   4 Input    8 Bit        Muxes := 2     
+	  11 Input    7 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 14    
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 2     
+	  11 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 3     
+	  11 Input    1 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 120 (col length:60)
+BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design topo has port o_seg_esq[7] driven by constant 1
+WARNING: [Synth 8-3917] design topo has port o_seg_dir[7] driven by constant 1
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1355.480 ; gain = 687.008
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1481.219 ; gain = 812.746
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1481.441 ; gain = 812.969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1496.699 ; gain = 828.227
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1725.340 ; gain = 1056.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1725.340 ; gain = 1056.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1725.340 ; gain = 1056.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1725.340 ; gain = 1056.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1725.340 ; gain = 1056.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1725.340 ; gain = 1056.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    26|
+|3     |LUT1   |     7|
+|4     |LUT2   |    91|
+|5     |LUT3   |    35|
+|6     |LUT4   |    15|
+|7     |LUT5   |    14|
+|8     |LUT6   |    34|
+|9     |FDCE   |   102|
+|10    |FDPE   |     1|
+|11    |IBUF   |     2|
+|12    |OBUF   |    27|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1725.340 ; gain = 1056.867
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:23 . Memory (MB): peak = 1725.340 ; gain = 973.836
+Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1725.340 ; gain = 1056.867
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1734.508 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 26 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1738.168 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 1e746fec
+INFO: [Common 17-83] Releasing license: Synthesis
+69 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1738.168 ; gain = 1239.914
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1738.168 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Aluno/Documents/project_12/project_12.runs/synth_1/topo.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file topo_utilization_synth.rpt -pb topo_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Dec  5 14:57:46 2025...

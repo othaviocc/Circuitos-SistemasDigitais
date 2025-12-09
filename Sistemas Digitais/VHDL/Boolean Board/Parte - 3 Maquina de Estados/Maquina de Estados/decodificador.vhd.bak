@@ -1,0 +1,15 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity decodificador is
+    port(
+        i_entrada   : in std_logic;
+        o_saida : out std_logic_vector(1 downto 0)
+    );
+end entity;
+
+architecture comportamental of decodificador is
+begin
+    o_saida <= '10' when i_entrada = "0" else '01';
+end architecture;

@@ -1,0 +1,30 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity flipflopD_8bits is 
+   port(
+      o_Q, o_Qn : out std_logic_vector(7 downto 0);    
+      i_Clk, i_Rst : in std_logic;
+      i_D : in std_logic_vector(7 downto 0)
+   );
+end flipflopD_8bits;
+
+architecture estrutural of flipflopD_8bits is
+
+   component flipflopD
+      port(
+         o_q, o_qn : out std_logic;    
+         i_clk, i_d, i_rst : in std_logic   
+      );
+   end component;
+
+begin
+   FF1: flipflopD port map(o_q => o_Q(0), o_qn => o_Qn(0), i_clk => i_Clk, i_d => i_D(0), i_rst => i_Rst);
+   FF2: flipflopD port map(o_q => o_Q(1), o_qn => o_Qn(1), i_clk => i_Clk, i_d => i_D(1), i_rst => i_Rst);
+   FF3: flipflopD port map(o_q => o_Q(2), o_qn => o_Qn(2), i_clk => i_Clk, i_d => i_D(2), i_rst => i_Rst);
+   FF4: flipflopD port map(o_q => o_Q(3), o_qn => o_Qn(3), i_clk => i_Clk, i_d => i_D(3), i_rst => i_Rst);
+   FF5: flipflopD port map(o_q => o_Q(4), o_qn => o_Qn(4), i_clk => i_Clk, i_d => i_D(4), i_rst => i_Rst);
+   FF6: flipflopD port map(o_q => o_Q(5), o_qn => o_Qn(5), i_clk => i_Clk, i_d => i_D(5), i_rst => i_Rst);
+   FF7: flipflopD port map(o_q => o_Q(6), o_qn => o_Qn(6), i_clk => i_Clk, i_d => i_D(6), i_rst => i_Rst);
+   FF8: flipflopD port map(o_q => o_Q(7), o_qn => o_Qn(7), i_clk => i_Clk, i_d => i_D(7), i_rst => i_Rst);
+end estrutural;

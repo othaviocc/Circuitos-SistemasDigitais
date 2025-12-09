@@ -1,0 +1,25 @@
+Library IEEE;
+USE IEEE.Std_logic_1164.all;
+
+entity flipflopD is 
+   port(
+      o_q,o_qn : out std_logic;    
+      i_clk, i_d, i_rst:in std_logic   
+   );
+end flipflopD;
+
+architecture estrutural of flipflopD is  
+	signal nand1,nand2,nand3,nand4,nand5,nand6,nand7,nand8: std_logic;
+begin  
+      nand1 <= i_d nand (not i_clk);
+		nand2 <= (not i_d) nand (not i_clk);
+		nand3 <= nand1 nand nand4;
+		nand4 <= nand2 nand nand3;
+		nand5 <= nand3 nand i_clk;
+		nand6 <= nand4 nand i_clk;
+		nand7 <= nand5 nand nand8 ;
+		nand8 <= nand7 nand nand6;
+		o_q <= nand7;
+		o_qn <= nand8;
+		    
+end estrutural; 

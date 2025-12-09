@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="2976" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="10376" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="11708" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="9564" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="13272" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="2156" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="10576" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="8344" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="12436" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Aluno" Host="DESKTOP-HTMCFGA" Pid="12712" HostCore="12" HostMemory="033601802240">
+    </Process>
+</ProcessHandle>
